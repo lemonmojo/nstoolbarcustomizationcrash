@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.AVKitIBPlugin" version="21507"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <capability name="NSView safe area layout guides" minToolsVersion="12.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ContentViewController" customModule="ToolbarCustomizationCrash" customModuleProvider="target">
+            <connections>
+                <outlet property="avPlayerView" destination="XbQ-eY-A4F" id="L8U-xH-Lt8"/>
+                <outlet property="view" destination="c22-O7-iKe" id="wQ9-u8-uza"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fuy-PE-ZOH">
+                    <rect key="frame" x="5" y="189" width="135" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="How to make it crash:" id="Tzf-Xy-Gvd">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <avPlayerView controlsStyle="inline" showsFullScreenToggleButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XbQ-eY-A4F">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="181"/>
+                </avPlayerView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="NF6-2D-mgm" firstAttribute="top" secondItem="fuy-PE-ZOH" secondAttribute="top" constant="-15" id="303-6L-Ad0"/>
+                <constraint firstItem="NF6-2D-mgm" firstAttribute="trailing" secondItem="XbQ-eY-A4F" secondAttribute="trailing" id="4bd-9S-mtI"/>
+                <constraint firstItem="XbQ-eY-A4F" firstAttribute="leading" secondItem="NF6-2D-mgm" secondAttribute="leading" id="An1-sH-DDZ"/>
+                <constraint firstItem="XbQ-eY-A4F" firstAttribute="top" secondItem="fuy-PE-ZOH" secondAttribute="bottom" constant="8" symbolic="YES" id="QLp-iK-fAC"/>
+                <constraint firstItem="fuy-PE-ZOH" firstAttribute="leading" secondItem="NF6-2D-mgm" secondAttribute="leading" constant="7" id="Suh-wL-fwn"/>
+                <constraint firstItem="NF6-2D-mgm" firstAttribute="bottom" secondItem="XbQ-eY-A4F" secondAttribute="bottom" id="ks7-W6-tNC"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="NF6-2D-mgm"/>
+            <viewLayoutGuide key="layoutMargins" id="x9R-Zb-iba"/>
+            <point key="canvasLocation" x="-223" y="154"/>
+        </customView>
+    </objects>
+</document>
