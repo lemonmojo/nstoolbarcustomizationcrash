@@ -1,8 +1,14 @@
 import Cocoa
 import AVKit
 
+protocol ContentViewControllerDelegate: AnyObject {
+	func contentViewControllerSetInvalidToolbarConfig(_ contentViewController: ContentViewController)
+}
+
 class ContentViewController: NSViewController {
-	@IBOutlet weak var avPlayerView: AVPlayerView!
+	weak var delegate: ContentViewControllerDelegate?
+	
+	@IBOutlet private weak var avPlayerView: AVPlayerView!
 	
 	init() {
 		super.init(nibName: "ContentView", bundle: .main)
@@ -31,5 +37,9 @@ class ContentViewController: NSViewController {
 		
 		avPlayerView.player = player
 		player.play()
+	}
+	
+	@IBAction private func buttonSetInvalidToolbarConfig_action(_ sender: Any) {
+		delegate?.contentViewControllerSetInvalidToolbarConfig(self)
 	}
 }

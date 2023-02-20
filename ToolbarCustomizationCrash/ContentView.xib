@@ -31,11 +31,23 @@
                 <avPlayerView controlsStyle="inline" showsFullScreenToggleButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XbQ-eY-A4F">
                     <rect key="frame" x="0.0" y="0.0" width="480" height="181"/>
                 </avPlayerView>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4N5-Zz-98V">
+                    <rect key="frame" x="320" y="182" width="159" height="27"/>
+                    <buttonCell key="cell" type="push" title="Set invalid toolbar config" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UNA-k5-JEj">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="buttonSetInvalidToolbarConfig_action:" target="-2" id="Jj1-cL-aPC"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="NF6-2D-mgm" firstAttribute="top" secondItem="fuy-PE-ZOH" secondAttribute="top" constant="-15" id="303-6L-Ad0"/>
                 <constraint firstItem="NF6-2D-mgm" firstAttribute="trailing" secondItem="XbQ-eY-A4F" secondAttribute="trailing" id="4bd-9S-mtI"/>
                 <constraint firstItem="XbQ-eY-A4F" firstAttribute="leading" secondItem="NF6-2D-mgm" secondAttribute="leading" id="An1-sH-DDZ"/>
+                <constraint firstItem="4N5-Zz-98V" firstAttribute="centerY" secondItem="fuy-PE-ZOH" secondAttribute="centerY" id="HqN-5O-2Jr"/>
+                <constraint firstItem="NF6-2D-mgm" firstAttribute="trailing" secondItem="4N5-Zz-98V" secondAttribute="trailing" constant="7" id="KtG-CS-abr"/>
                 <constraint firstItem="XbQ-eY-A4F" firstAttribute="top" secondItem="fuy-PE-ZOH" secondAttribute="bottom" constant="8" symbolic="YES" id="QLp-iK-fAC"/>
                 <constraint firstItem="fuy-PE-ZOH" firstAttribute="leading" secondItem="NF6-2D-mgm" secondAttribute="leading" constant="7" id="Suh-wL-fwn"/>
                 <constraint firstItem="NF6-2D-mgm" firstAttribute="bottom" secondItem="XbQ-eY-A4F" secondAttribute="bottom" id="ks7-W6-tNC"/>

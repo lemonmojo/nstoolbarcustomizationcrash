@@ -114,3 +114,57 @@ extension ToolbarController: NSToolbarDelegate {
 		]
 	}
 }
+
+extension ToolbarController {
+	func setInvalidConfiguration() {
+		let validConfig = toolbar.configuration
+		
+		guard let invalidConfig = makeInvalidConfig(validConfig) else {
+			return
+		}
+		
+		toolbar.setConfiguration(invalidConfig)
+		
+		showWarningAlert(message: "An invalid toolbar config (without the sidebar tracking separator item) was set.\n\nIn the customization sheet that will appear automatically please drag the default set to the toolbar and watch the app explode.")
+		
+		toolbar.runCustomizationPalette(nil)
+	}
+	
+	private func makeInvalidConfig(_ config: [String: Any]) -> [String: Any]? {
+		let itemIdentifiersKey = "TB Item Identifiers"
+		
+		guard var itemIdentifiers = config[itemIdentifiersKey] as? [String] else {
+			showWarningAlert(message: "\"\(itemIdentifiersKey)\" was not found in the config so it's not possible to make the config invalid.\n\nPlease first customize the toolbar (ie. by adding the \"Home\" item somewhere in the toolbar), then try again.")
+			
+			return nil
+		}
+		
+		let sidebarTrackingSeparatorIdentifier = NSToolbarItem.Identifier.sidebarTrackingSeparator.rawValue
+		
+		guard let sidebarTrackingSeparatorItemIndex = itemIdentifiers.firstIndex(of: sidebarTrackingSeparatorIdentifier) else {
+			showWarningAlert(message: "\"\(sidebarTrackingSeparatorIdentifier)\" was not found in the config.\n\nThis is unexpected because it should be there. Not sure why it's not.")
+			
+			return nil
+		}
+		
+		print("Removing \"\(sidebarTrackingSeparatorIdentifier)\" from the config, thus making it invalid")
+		itemIdentifiers.remove(at: sidebarTrackingSeparatorItemIndex)
+		
+		var invalidConfig = config
+		
+		invalidConfig[itemIdentifiersKey] = itemIdentifiers
+		
+		return invalidConfig
+	}
+	
+	private func showWarningAlert(message: String) {
+		let alert = NSAlert()
+		alert.alertStyle = .warning
+		alert.messageText = "Warning"
+		alert.informativeText = message
+		
+		alert.addButton(withTitle: "OK")
+		
+		alert.runModal()
+	}
+}

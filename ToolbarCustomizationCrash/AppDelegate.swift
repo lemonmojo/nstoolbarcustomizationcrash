@@ -47,10 +47,18 @@ private extension AppDelegate {
 		
 		splitViewController.addSplitViewItem(sidebarItem)
 		splitViewController.addSplitViewItem(contentItem)
+		
+		contentViewController.delegate = self
 	}
 	
 	func configureToolbar() {
 		let toolbar = toolbarController.toolbar
 		window.toolbar = toolbar
+	}
+}
+
+extension AppDelegate: ContentViewControllerDelegate {
+	func contentViewControllerSetInvalidToolbarConfig(_ contentViewController: ContentViewController) {
+		toolbarController.setInvalidConfiguration()
 	}
 }
